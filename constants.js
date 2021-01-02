@@ -9,6 +9,9 @@ const Constants = {
   SEARCH_MOVIE_URL: `${Config.BASE_URL}/search/movie?api_key=${Config.API_KEY}&query=`,
   SEARCH_SHOW_URL: `${Config.BASE_URL}/search/tv?api_key=${Config.API_KEY}&query=`,
 
+  getImdbInfoURL: (info) =>
+    `//www.omdbapi.com/?apikey=46189a64&t=${info.name}&plot=short&r=json`,
+
   getTitleDetailsURL: (info) =>
     info.movie
       ? `${Config.BASE_URL}/movie/${info.id}?api_key=${Config.API_KEY}`

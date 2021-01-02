@@ -40,4 +40,13 @@ const Service = {
       $.get(url, resolve);
     });
   },
+
+  getImdbInfo: (info) => {
+    // TODO: How to get the error from $.get
+    // Send it to resolve (currently '_').
+    return new Promise((resolve, _) => {
+      const url = Constants.getImdbInfoURL(info);
+      $.get(url, resolve);
+    });
+  },
 };

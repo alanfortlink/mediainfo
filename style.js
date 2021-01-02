@@ -81,12 +81,29 @@ const Style = {
         position: absolute;
         bottom: 0;
         background-color: rgba(0, 0, 0, 0.5);
-        height: 22px;
+        height: 44px;
         width: 100%;
         padding: 4px;
         text-overflow: ellipsis;
         white-space: nowrap;
         overflow: hidden;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .media-info-cast-name-actor,
+    .media-info-cast-name-character{
+      text-overflow: ellipsis;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+
+    .media-info-cast-name-actor{
+      font-weight: bold;
+    }
+
+    .media-info-cast-name-character{
+      font-size: 17px;
     }
 
     .media-info-cast-image {
@@ -105,12 +122,21 @@ const Style = {
 
     .media-info-title-description,
     .media-info-cast-description {
+        display: flex;
+        justify-content: space-between;
         color: white;
         font-size: 40px;
         font-weight: bold;
         padding: 4px;
     }
 
+    #mediaInfoImdbRating, #mediaInfoImdbCount {
+      margin: 2px;
+    }
+
+    #mediaInfoOverviewImdb {
+      display: flex;
+    }
 
     #mediaInfoCastScrollContainer {
         display: flex;
