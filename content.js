@@ -3,9 +3,9 @@ let $currentTitle = null;
 const loadElements = (callback) => {
   // TODO: Reject after a few retries.
   if (
-    !getTitleContainer() ||
-    !getPlayPauseButton() ||
-    !getNetflixAppContainer()
+    !Elements.getTitleContainer() ||
+    !Elements.getPlayPauseButton() ||
+    !Elements.getNetflixAppContainer()
   ) {
     // If we can't load the objects, they're not ready yet.
     // Let's try again in a second.
@@ -19,14 +19,14 @@ const loadElements = (callback) => {
 };
 
 const loadContent = () => {
-  const titleInfo = getTitleInfo();
-  getTitleWithInfo(titleInfo)
+  const titleInfo = Elements.getTitleInfo();
+  Service.getTitleWithInfo(titleInfo)
     .then((info) => {
       info.movie = titleInfo.movie;
-      getTitleDetails(info)
+      Service.getTitleDetails(info)
         .then((details) => {
-          getTitleCredits(info).then((credits) => {
-            updateMediaInfo(details, credits);
+          Service.getTitleCredits(info).then((credits) => {
+            Render.updateMediaInfo(details, credits);
           });
         })
         .catch(notifyError);
@@ -35,16 +35,16 @@ const loadContent = () => {
 };
 
 function removeElements() {
-  removeStyles();
-  removeMediaInfoContainer();
-  removeInfoToggleButton();
+  Style.removeStyles();
+  Elements.removeMediaInfoContainer();
+  Elements.removeInfoToggleButton();
 }
 
 function setupElements() {
-  addStyles();
+  Style.addStyles();
   loadElements(() => {
-    addMediaInfoContainer();
-    addInfoToggleButton(onInfoClicked);
+    Elements.addMediaInfoContainer();
+    Elements.addInfoToggleButton(Actions.onInfoClicked);
     loadContent();
   });
 }
@@ -52,14 +52,14 @@ function setupElements() {
 function setup() {
   // See if the movie changed every second
   setInterval(() => {
-    const $titleContainer = getTitleContainer();
+    const $titleContainer = Elements.getTitleContainer();
 
     if (!$titleContainer) {
       removeElements();
       return;
     }
 
-    const $newTitle = getTitleContainer().innerHTML;
+    const $newTitle = Elements.getTitleContainer().innerHTML;
     if ($newTitle != $currentTitle) {
       $currentTitle = $newTitle;
 
