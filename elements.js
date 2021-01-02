@@ -7,9 +7,17 @@ const getNetflixAppContainer = () => $("#appMountPoint")[0];
 
 const getMediaInfoContainer = () => $("#mediaInfoContainer")[0];
 
+const getInfoToggleButton = () => $("#infoToggleButton");
+
 const addMediaInfoContainer = () => {
   const divHTML = `<div id="mediaInfoContainer">Loading...</div>`;
   $(divHTML).appendTo(getNetflixAppContainer());
+};
+
+const removeMediaInfoContainer = () => {
+  if (getMediaInfoContainer()) {
+    getMediaInfoContainer().remove();
+  }
 };
 
 const addInfoToggleButton = (toggleFunction) => {
@@ -26,7 +34,13 @@ const addInfoToggleButton = (toggleFunction) => {
   `;
 
   getPlayPauseButton().insertAdjacentHTML("afterEnd", buttonHTML);
-  $("#infoToggleButton").click(toggleFunction);
+  getInfoToggleButton().click(toggleFunction);
+};
+
+const removeInfoToggleButton = () => {
+  if (getInfoToggleButton()) {
+    getInfoToggleButton().remove();
+  }
 };
 
 const getTitleInfo = () => {

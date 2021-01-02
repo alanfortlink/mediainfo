@@ -1,3 +1,5 @@
+let $currentTitle = null;
+
 const loadElements = (callback) => {
   // TODO: Reject after a few retries.
   if (
@@ -32,13 +34,39 @@ const loadContent = () => {
     .catch(notifyError);
 };
 
-function setup() {
+function removeElements() {
+  removeStyles();
+  removeMediaInfoContainer();
+  removeInfoToggleButton();
+}
+
+function setupElements() {
   addStyles();
   loadElements(() => {
     addMediaInfoContainer();
     addInfoToggleButton(onInfoClicked);
     loadContent();
   });
+}
+
+function setup() {
+  // See if the movie changed every second
+  setInterval(() => {
+    const $titleContainer = getTitleContainer();
+
+    if (!$titleContainer) {
+      removeElements();
+      return;
+    }
+
+    const $newTitle = getTitleContainer().innerHTML;
+    if ($newTitle != $currentTitle) {
+      $currentTitle = $newTitle;
+
+      removeElements();
+      setupElements();
+    }
+  }, 1000);
 }
 
 // TODO: Something to destruct?
