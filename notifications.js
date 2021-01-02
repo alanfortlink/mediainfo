@@ -1,0 +1,1 @@
+const notifyError = console.error;
