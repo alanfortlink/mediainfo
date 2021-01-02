@@ -44,6 +44,17 @@ const Style = {
       flex-grow: 1;
     }
 
+    #mediaInfoOverviewTitleName{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 40px;
+    }
+
+    #mediaInfoOverviewTitleName div {
+      margin-right: 8px;
+    }
+
     #mediaInfoOverviewContent {
         display: flex;
         flex-grow: 1;

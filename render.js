@@ -39,7 +39,10 @@ const Render = {
         </div>
         <div id="mediaInfoTitle">
           <div class="media-info-title-description">
-              <div id="mediaInfoOverviewTitleName">${titleName} (${yearExpression})</div>
+              <div id="mediaInfoOverviewTitleName">
+                <div>${titleName}</div>
+                <p id="mediaInfoTitleYear"></p>
+              </div>
               <div id="mediaInfoOverviewImdb">
                 <div id="mediaInfoImdbRating">-.-</div>
                 /
@@ -87,6 +90,7 @@ const Render = {
         console.log(imdbInfo);
         $("#mediaInfoImdbRating")[0].innerHTML = `${imdbInfo.imdbRating}★`;
         $("#mediaInfoImdbCount")[0].innerHTML = `${imdbInfo.imdbVotes} votes`;
+        $("#mediaInfoTitleYear")[0].innerHTML = `(${imdbInfo.Year})`;
       })
       .catch(notifyError);
 
