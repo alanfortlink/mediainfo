@@ -4,8 +4,8 @@ const getCastItemHTML = (castMember) => {
       <div class="media-info-cast-item">
         <div class="media-info-cast-image">
           <img id="${CAST_IMG_PREFIX_ID}${castMember.id}" src=""/>
+          <div class="media-info-cast-name">${castMember.name}</div>
         </div>
-        <div class="media-info-cast-name">${castMember.name}</div>
       </div>
     </a>
   `;
@@ -54,12 +54,12 @@ const updateMediaInfo = (details, credits) => {
   credits.cast.forEach((castMember) => {
     getPerson(castMember)
       .then((person) => {
-        if (person.profile_path) {
-          $(`#${CAST_IMG_PREFIX_ID}${person.id}`)[0].setAttribute(
-            "src",
-            `https://image.tmdb.org/t/p/w200/${person.profile_path}`
-          );
-        }
+        $(`#${CAST_IMG_PREFIX_ID}${person.id}`)[0].setAttribute(
+          "src",
+          person.profile_path
+            ? `https://image.tmdb.org/t/p/w200/${person.profile_path}`
+            : `https://media.istockphoto.com/vectors/default-avatar-profile-icon-grey-photo-placeholder-vector-id846183030?b=1&k=6&m=846183030&s=612x612&w=0&h=Dp-Qub1xwkcyR2p96O6DdrvEBNsMfcOur29sTxUo-V8=`
+        );
       })
       .catch(notifyError);
   });

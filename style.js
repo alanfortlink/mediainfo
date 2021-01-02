@@ -1,9 +1,9 @@
 const styleText = `
 <style id="mediaInfoStyleTag">
 #mediaInfoContainer {
-  position: absolute;
-    min-width: 70%;
-    max-width: 70%;
+    position: absolute;
+    min-width: 50%;
+    max-width: 50%;
 
     left: 50%;
     top: 50%;
@@ -35,15 +35,18 @@ const styleText = `
 
 #mediaInfoOverviewBanner {
     display: flex;
+    flex: 1;
 }
 
 #mediaInfoOverviewBanner img {
-    width: 400px;
-    flex-grow: 1;
+  display: flex;
+  flex-grow: 1;
 }
 
 #mediaInfoOverviewContent {
     display: flex;
+    flex-grow: 1;
+    flex: 3;
     padding: 16px;
     padding-top: 0;
     color: #ddd;
@@ -62,6 +65,7 @@ const styleText = `
     margin: 8px;
     background-color: #000;
     border-radius: 4px;
+    min-height: 100%;
 }
 
 .media-info-cast-item:hover {
@@ -73,20 +77,38 @@ const styleText = `
 .media-info-cast-name {
     color: white;
     font-size: 20px;
-    margin: 8px;
+    position: absolute;
+    bottom: 30px;
+    background-color: rgba(0, 0, 0, 0.5);
+    height: 22px;
+    width: 100%;
+    padding: 4px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.media-info-cast-image {
+  min-height: 255px;
+  max-height: 255px;
+  position: relative;
 }
 
 .media-info-cast-image img {
     border-radius: 4px;
+    min-width: 150px;
+    max-width: 150px;
+    min-height: 225px;
+    max-height: 225px;
 }
 
 .media-info-title-description,
-  .media-info-cast-description {
-      color: white;
-      font-size: 40px;
-      font-weight: bold;
-      padding: 4px;
-  }
+.media-info-cast-description {
+    color: white;
+    font-size: 40px;
+    font-weight: bold;
+    padding: 4px;
+}
 
 
 #mediaInfoCastScrollContainer {
