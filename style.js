@@ -3,13 +3,16 @@ const Style = {
   <style id="mediaInfoStyleTag">
     #mediaInfoContainer {
         position: absolute;
-        min-width: 50%;
-        max-width: 50%;
+        min-width: 1440px;
+        max-width: 1440px;
+
+        max-height: 800px;
+        min-height: 800px;
 
         left: 50%;
-        top: 50%;
+        top: 5%;
 
-        transform: translateX(-50%) translateY(-50%);
+        transform: translateX(-50%);
 
         border: 1px solid white;
         background-color: rgba(0, 0, 0, 0.7);
@@ -42,6 +45,7 @@ const Style = {
     #mediaInfoOverviewBanner img {
       display: flex;
       flex-grow: 1;
+      height: 450px;
     }
 
     #mediaInfoOverviewTitleName{
@@ -58,7 +62,7 @@ const Style = {
     #mediaInfoOverviewContent {
         display: flex;
         flex-grow: 1;
-        flex: 3;
+        flex: 4;
         padding: 16px;
         padding-top: 0;
         color: #ddd;
@@ -125,10 +129,10 @@ const Style = {
 
     .media-info-cast-image img {
         border-radius: 4px;
-        min-width: 150px;
-        max-width: 150px;
-        min-height: 225px;
-        max-height: 225px;
+        min-width: 120px;
+        max-width: 120px;
+        min-height: 180px;
+        max-height: 180px;
     }
 
     .media-info-title-description,
