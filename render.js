@@ -20,7 +20,16 @@ const Render = {
   updateMediaInfo: (details, credits) => {
     console.log(details);
     console.log(credits);
-    const titleName = details.original_title || details.original_name;
+
+    const titleName =
+      details.title || details.original_title || details.original_name;
+
+    const yearExpression = details.release_date
+      ? Aux.getYear(details.release_date)
+      : `${Aux.getYear(details.first_air_date)} - ${Aux.getYear(
+          details.last_air_date
+        )}`;
+
     const $containerHTML = `
       <div id="mediaInfoParent">
         <div id="mediaInfoBackdrop" 
@@ -30,7 +39,7 @@ const Render = {
         </div>
         <div id="mediaInfoTitle">
           <div class="media-info-title-description">
-              <div id="mediaInfoOverviewTitleName">${titleName}</div>
+              <div id="mediaInfoOverviewTitleName">${titleName} (${yearExpression})</div>
               <div id="mediaInfoOverviewImdb">
                 <div id="mediaInfoImdbRating">-.-</div>
                 /
