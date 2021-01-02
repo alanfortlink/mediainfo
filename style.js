@@ -182,6 +182,17 @@ const Style = {
         border-left: 20px solid white;
         border-bottom: 10px solid transparent;
     }
+
+    #mediaInfoBackdrop{
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      margin-left: -16px;
+      margin-top: -16px;
+      z-index: -1;
+      opacity: 0.3;
+      background-size: 100% !important;
+    }
   </style>
   `,
 

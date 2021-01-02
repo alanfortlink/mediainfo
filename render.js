@@ -18,9 +18,16 @@ const Render = {
   },
 
   updateMediaInfo: (details, credits) => {
+    console.log(details);
+    console.log(credits);
     const titleName = details.original_title || details.original_name;
     const $containerHTML = `
       <div id="mediaInfoParent">
+        <div id="mediaInfoBackdrop" 
+             style="background: url(//image.tmdb.org/t/p/w400/${
+               details.backdrop_path
+             });">
+        </div>
         <div id="mediaInfoTitle">
           <div class="media-info-title-description">
               <div id="mediaInfoOverviewTitleName">${titleName}</div>
@@ -33,9 +40,7 @@ const Render = {
 
           <div id="mediaInfoOverviewContainer">
             <div id="mediaInfoOverviewBanner">
-              <img src="https://image.tmdb.org/t/p/w400/${
-                details.poster_path
-              }"/>
+              <img src="//image.tmdb.org/t/p/w400/${details.poster_path}"/>
             </div>
             <div id="mediaInfoOverviewContent">
               <div id="mediaInfoOverviewText">
