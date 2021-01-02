@@ -5,8 +5,8 @@
   "content_scripts": [
     {
       "matches": [
-        "http://www.netflix.com/watch/*",
-        "https://www.netflix.com/watch/*"
+        "http://www.netflix.com/*",
+        "https://www.netflix.com/*"
       ],
       "js": [
         "jquery-3.5.1.min.js",
