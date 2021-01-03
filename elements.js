@@ -57,7 +57,9 @@ const Elements = {
         }
       : {
           title: $titleContainer.children[0].innerHTML,
-          subtitle: $titleContainer.children[2].innerHTML,
+          subtitle:
+            $titleContainer.children[$titleContainer.children.length - 1]
+              .innerHTML,
           movie: isTitleAMovie,
           extra: $titleContainer.children[1].innerHTML,
         };
