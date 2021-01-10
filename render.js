@@ -3,7 +3,7 @@ const Render = {
     return details.extra_id
       ? `<div class="overview-separator">
                 <div id="mediaInfoOverviewTitle">
-                  <div>${details.extra_name} <span id="mediaEpisodeInfoTitleYear"></span></div>
+                  <div>S${details.extra_season_number}E${details.extra_episode_number} "${details.extra_name}" <span id="mediaEpisodeInfoTitleYear"></span></div>
                   <div>
                     <div id="mediaEpisodeInfoOverviewImdb">
                       <div id="mediaEpisodeInfoImdbRating">-.-</div>
