@@ -62,6 +62,7 @@ const Style = {
     #mediaInfoOverviewContent {
         display: flex;
         flex-grow: 1;
+        flex-direction: column;
         flex: 4;
         padding: 16px;
         padding-top: 0;
@@ -145,11 +146,14 @@ const Style = {
         padding: 4px;
     }
 
-    #mediaInfoImdbRating, #mediaInfoImdbCount {
+    #mediaInfoImdbRating, 
+    #mediaInfoImdbCount, 
+    #mediaEpisodeInfoImdbRating, 
+    #mediaEpisodeInfoImdbCount {
       margin: 2px;
     }
 
-    #mediaInfoOverviewImdb {
+    #mediaInfoOverviewImdb, #mediaEpisodeInfoOverviewImdb {
       display: flex;
     }
 
@@ -207,6 +211,22 @@ const Style = {
       z-index: -1;
       opacity: 0.3;
       background-size: 100% !important;
+    }
+
+    #mediaInfoOverviewTitle{
+      color: #eeeeee;
+      font-weight: bold;
+      font-size: 40px;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .no-padding{
+      padding: 0;
+    }
+
+    .no-margin{
+      margin: 0;
     }
   </style>
   `,

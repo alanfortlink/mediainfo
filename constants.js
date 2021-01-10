@@ -10,15 +10,30 @@ const Constants = {
   SEARCH_SHOW_URL: `${Config.BASE_URL}/search/tv?api_key=${Config.API_KEY}&query=`,
 
   getImdbInfoURL: (info) =>
-    `//www.omdbapi.com/?apikey=46189a64&t=${info.name}&plot=short&r=json`,
+    `//www.omdbapi.com/?apikey=46189a64&t=${info.name}&plot=full&r=json`,
 
-  getTitleDetailsURL: (info) =>
-    info.movie
-      ? `${Config.BASE_URL}/movie/${info.id}?api_key=${Config.API_KEY}`
-      : `${Config.BASE_URL}/tv/${info.id}?api_key=${Config.API_KEY}`,
+  getImdbInfoWithIdURL: (info) =>
+    `//www.omdbapi.com/?apikey=46189a64&i=${info.id}&plot=full&r=json`,
+
+  getTitleDetailsURLs: (info) => {
+    if (info.titleInfo.type == "movie")
+      return [`${Config.BASE_URL}/movie/${info.id}?api_key=${Config.API_KEY}`];
+    else if (info.titleInfo.type == "tvshow") {
+      const [season, episode] = info.titleInfo.extra
+        .replace("S", "")
+        .replace("E", "")
+        .split(":");
+      return [
+        `${Config.BASE_URL}/tv/${info.id}?api_key=${Config.API_KEY}`,
+        `${Config.BASE_URL}/tv/${info.id}/season/${season}/episode/${episode}?api_key=${Config.API_KEY}`,
+        `${Config.BASE_URL}/tv/${info.id}/season/${season}/episode/${episode}/external_ids?api_key=${Config.API_KEY}`,
+      ];
+    } else
+      return [`${Config.BASE_URL}/movie/${info.id}?api_key=${Config.API_KEY}`];
+  },
 
   getTitleCreditsURL: (info) =>
-    info.movie
+    info.titleInfo.type == "movie"
       ? `${Config.BASE_URL}/movie/${info.id}/credits?api_key=${Config.API_KEY}`
       : `${Config.BASE_URL}/tv/${info.id}/credits?api_key=${Config.API_KEY}`,
 

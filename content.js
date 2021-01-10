@@ -22,7 +22,7 @@ const loadContent = () => {
   const titleInfo = Elements.getTitleInfo();
   Service.getTitleWithInfo(titleInfo)
     .then((info) => {
-      info.movie = titleInfo.movie;
+      info.titleInfo = titleInfo;
       Service.getTitleDetails(info)
         .then((details) => {
           Service.getTitleCredits(info).then((credits) => {

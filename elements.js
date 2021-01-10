@@ -47,21 +47,30 @@ const Elements = {
   getTitleInfo: () => {
     const $titleContainer = Elements.getTitleContainer();
     const isTitleAMovie = $titleContainer.children.length == 0;
+    const istitleATVShow = $titleContainer.children.length == 3;
 
-    return isTitleAMovie
-      ? {
-          title: $titleContainer.innerHTML,
-          subtitle: null,
-          movie: isTitleAMovie,
-          extra: null,
-        }
-      : {
-          title: $titleContainer.children[0].innerHTML,
-          subtitle:
-            $titleContainer.children[$titleContainer.children.length - 1]
-              .innerHTML,
-          movie: isTitleAMovie,
-          extra: $titleContainer.children[1].innerHTML,
-        };
+    if (isTitleAMovie) {
+      return {
+        title: $titleContainer.innerHTML,
+        type: "movie",
+      };
+    } else if (istitleATVShow) {
+      return {
+        title: $titleContainer.children[0].innerHTML,
+        subtitle:
+          $titleContainer.children[$titleContainer.children.length - 1]
+            .innerHTML,
+        type: "tvshow",
+        extra: $titleContainer.children[1].innerHTML,
+      };
+    } else {
+      return {
+        title: $titleContainer.children[0].innerHTML,
+        subtitle:
+          $titleContainer.children[$titleContainer.children.length - 1]
+            .innerHTML,
+        type: "unknown",
+      };
+    }
   },
 };
